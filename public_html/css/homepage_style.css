@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : Arash
 */
 
+*{
+    font-family: 'Papyrus';
+}
+
 body {
     background-image: url('../img/homepage.jpg');
     background-repeat: no-repeat;

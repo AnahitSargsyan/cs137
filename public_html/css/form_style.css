@@ -12,3 +12,7 @@ and open the template in the editor.
     font-family: 'Book Antiqua';
 }
 
+center {
+    display: block;
+    text-align: center;
+}

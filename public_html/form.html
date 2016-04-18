@@ -8,18 +8,9 @@ and open the template in the editor.
     <head>
         <title>HatSpace Order Form</title>
         <script type="text/javascript">
-        <!--
-// Four tests:
-// 1) Age is an integer.
-// 2) Major is not an integer.
-// 3) Major is not missing
-// 4) Student number is an integer.
-// If any of the tests does not pass, submission is canceled.
-            
-            
+        <!--     
             function CheckOrder()
             { 
-                alert("in CheckOrder function")
                 var HatID = document.OrderForm.HatID.value;
                 var QuantityOrdered = document.OrderForm.QuantityField.value;
                 var FirstName = document.OrderForm.FirstNameField.value;
@@ -44,57 +35,58 @@ and open the template in the editor.
                     }
                 }
                 
-                
                 if (parseInt(QuantityOrdered) <= 0)
                 {
                     alert ("Quantity must be a positive nonzero integer.");
-                    
+                    return false;
                 }
-                else if (parseInt(FirstName) > 0)
+                else if (!/^[A-z]+$/.test(FirstName))
                 {
                     alert ("No numbers allowed in First Name field");
-                    
+                    return false;
                 }
-                else if (parseInt(LastName) > 0)
+                else if (!/^[A-z]+$/.test(LastName))
                 {
                     alert ("No numbers allowed in Last Name field");
-                    
+                    return false;
                 }
-                else if (parseInt(PhoneNumber).length != 10)
+                else if(!/^\d{10}$/.test(PhoneNumber))
                 {
                     alert ("Phone number must be 10 digits long. Example: 1234567890");
-                    
+                    return false;
                 }
-                else if(ShippingAddress == "")
+                else if(!/^[A-z]+$/.test(City))
                 {
-                    alert ("No shipping address entered");
+                    alert ("Non-alphabetic characters not allowed in City field");
+                    return false;
                 }
-                else if(parseInt(City) > 0)
+                else if(!/^[A-z]+$/.test(State))
                 {
-                    alert ("No numbers allowed in City field");
+                    alert ("Non-alphabetic characters not allowed in State field");
+                    return false;
                 }
-                else if(parseInt(State) > 0)
+                else if(!/^\d{5}$/.test(ZipCode))
                 {
-                    alert ("No numbers allowed in State field");
+                    alert ("Zip Code must contain only numbers");
+                    return false;
                 }
-                else if(parseInt(ZipCode).length != 5)
+                else if(!/^\d{16}$/.test(CCNumber))
                 {
-                    alert ("Zip Code must be 5 digits long");
+                    alert ("Credit Card number must contain only numbers");
+                    return false;
                 }
-                else if(parseInt(CCNumber).length != 16)
+                else if(!/^[A-z]+$/.test(CCName))
                 {
-                    alert ("Credit Card number must be 16 digits long");
-                }
-                else if(parseInt(CCName) > 0)
-                {
-                    alert ("Credit Card name cannot contain numbers");
+                    alert ("Non-alphabetic characters not allowed in Credit Card Name field");
+                    return false;
                 }
                 else
                 {
-                    alert("trying to open email window");
                     var email = "yukiw@uci.edu";
-                    window.open("mailto:user@example.com?subject=Subject&body=message%20goes%20here");
-                                //window.open("mailto:" + email + "?subject=Order: " + HatID + "&body=Order Summary:%0D%0AHatID:" + HatID + "%0D%0AQuantity Ordered:" + QuantityOrdered + "%0D%0AName: " + FirstName + " " + LastName + "%0D%0APhoneNumber: " + PhoneNumber + "%0D%0AAddress: " + ShippingAddress + "%0D%0ACity: " + City + "%0AState: " + State + "%0AZIP: " + ZipCode + "%0ACard Number: " + CCNumber + "%0D%0AName on card: " + CCName + "%0D%0AExpiration Date: " + ExpMonth + "/" + ExpYear+ "%0D%0AShipping Method: " + ShippingMethod);
+                    window.open("mailto:" + email + "?subject=Order: " + HatID + "&body=Order Summary:%0D%0AHatID:" + HatID + "%0D%0AQuantity Ordered:" + QuantityOrdered + "%0D%0AName: " + FirstName + " " + LastName + "%0D%0APhoneNumber: " + PhoneNumber + "%0D%0AAddress: " + ShippingAddress + "%0D%0ACity: " + City + "%0AState: " + State + "%0AZIP: " + ZipCode + "%0ACard Number: " + CCNumber + "%0D%0AName on card: " + CCName + "%0D%0AExpiration Date: " + ExpMonth + "/" + ExpYear+ "%0D%0AShipping Method: " + ShippingMethod);
+    
+                    return true;
+                    //window.open("mailto:" + email + "?subject=Order: " + HatID + "&body=Order Summary:%0D%0AHatID:" + HatID + "%0D%0AQuantity Ordered:" + QuantityOrdered + "%0D%0AName: " + FirstName + " " + LastName + "%0D%0APhoneNumber: " + PhoneNumber + "%0D%0AAddress: " + ShippingAddress + "%0D%0ACity: " + City + "%0AState: " + State + "%0AZIP: " + ZipCode + "%0ACard Number: " + CCNumber + "%0D%0AName on card: " + CCName + "%0D%0AExpiration Date: " + ExpMonth + "/" + ExpYear+ "%0D%0AShipping Method: " + ShippingMethod);
                 }
                 // Format looks OK, form can be submitted.
             }
@@ -115,7 +107,7 @@ and open the template in the editor.
                     Quantity: <input id="QuantityOrdered" type="text" name="QuantityField" value="" required/><br />
                     First Name: <input id="FirstName" type="text" name="FirstNameField" required/><br />
                     Last Name: <input id="LastName" type="text" name="LastNameField" required/><br />
-                    Phone Number (Ex. 1234567890): <input id="PhoneNumber" type="text" name="PhoneNumberField" required/><br />
+                    Phone Number (Ex. 1234567890): <input id="PhoneNumber" type="text" name="PhoneNumberField" maxlength="10" required/><br />
                     Address: <input id="ShippingAddress" type="text" name="ShippingAddressField" required/><br />
                     City: <input id="CityName" type="text" name="CityField" required/><br />
                     State: <input id="StateName" type="text" name="StateField" required/><br />

@@ -46,7 +46,7 @@ and open the template in the editor.
                     alert ("No numbers allowed in Last Name field");
                     
                 }
-                else if (!(parseInt(PhoneNumber.value).length == 10))
+                else if (!(parseInt(PhoneNumber.value).length = 10))
                 {
                     alert ("Phone number must be 10 digits long. Example: 1234567890");
                     
@@ -63,11 +63,11 @@ and open the template in the editor.
                 {
                     alert ("No numbers allowed in State field");
                 }
-                else if(!(parseInt(ZipCode.value).length == 5))
+                else if(!(parseInt(ZipCode.value).length = 5))
                 {
                     alert ("Zip Code must be 5 digits long");
                 }
-                else if(!(parseInt(CCNumber.value).length == 16))
+                else if(!(parseInt(CCNumber.value).length = 16))
                 {
                     alert ("Credit Card number must be 16 digits long");
                 }
@@ -98,12 +98,8 @@ and open the template in the editor.
                 var ExpMonth = document.getElementById("CCExpiresMonth").value;
                 var ExpYear = document.getElementById("CCExpiresYear").value;
                 var ShippingMethod = getRadioButtonValue(document.OrderForm.Shipping);
-                window.open("mailto:yukiw@uci.edu?subject=Order:%20" + HatID + 
-                        "&body=Order%20Summary:%0AHatID:%20" + HatID + "%0AQuantity%20Ordered:%20" + 
-                        QuantityOrdered + "%0AName:%20" + FirstName + "%20" + LastName + "%0APhoneNumber:%20" + PhoneNumber + 
-                        "%0AAddress:%20" + ShippingAddress + "%0ACity:%20" + City + "%0AState:%20" + State + 
-                        "%0AZIP:%20" + ZipCode + "%0ACard%20Number:%20" + CCNumber + "%0AName%20on%20card:%20" + CCName +
-                        "%0AExpiration%20Date:%20" + ExpMonth + "/" + ExpYear+ "%0AShipping%20Method:%20" + ShippingMethod);
+                
+                window.open("mailto:yukiw@uci.edu?subject=Order: " + HatID + "&body=Order Summary:%0D%0AHatID:" + HatID + "%0D%0AQuantity Ordered:" + QuantityOrdered + "%0D%0AName: " + FirstName + " " + LastName + "%0D%0APhoneNumber: " + PhoneNumber + "%0D%0AAddress: " + ShippingAddress + "%0D%0ACity: " + City + "%0AState: " + State + "%0AZIP: " + ZipCode + "%0ACard Number: " + CCNumber + "%0D%0AName on card: " + CCName + "%0D%0AExpiration Date: " + ExpMonth + "/" + ExpYear+ "%0D%0AShipping Method: " + ShippingMethod);
             }
 
         </script>
@@ -116,7 +112,7 @@ and open the template in the editor.
             <center>
                 <h1 align="center">HatSpace Order Form</h1>
                 <!--<div>I'm sure you guys will make a great page, thanks :)</div>-->
-                <form name = "OrderForm" method="get" action="form.html">
+                <form name = "OrderForm" method="get">
                     
                     Hat ID: <input id="HatID" type="text" name="Hat ID" value="" required><br />
                     Quantity: <input id="QuantityOrdered" type="text" name="QuantityField" value="" required><br />
@@ -160,10 +156,9 @@ and open the template in the editor.
                                         <option value="27">2027
                                     </select><br />
                     Shipping Method:
-                    <p><input type="radio" name="Shipping" value="Overnight" />Overnight</p>
-                    <p><input type="radio" name="Shipping" value="2 Days Air" />2 Days Air"</p>
-                    <p><input type="radio" name="Shipping" value="6 Days Ground" />6 Days Ground</p>
-                    
+                    <input type="radio" name="Shipping" value="Overnight" />Overnight<br />
+                    <input type="radio" name="Shipping" value="2 Days Air" />2 Days Air<br />
+                    <input type="radio" name="Shipping" value="6 Days Ground" />6 Days Ground<br />
                     
                     <input type="submit" value="Submit Email" onclick="CheckOrder();">
                     

@@ -28,10 +28,12 @@ p{
 }
 
 div {
-  width: 900px;
-  margin: 0 auto;
+  width: 400px;
+  margin: 1 auto;
   overflow: auto;
 }
+
+
 /*
 ul {
   list-style-type: none;
@@ -42,8 +44,6 @@ ul {
 .floated_img{
   position: relative;
   float: left;
-  width: 300px;
-  height: 300px;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;

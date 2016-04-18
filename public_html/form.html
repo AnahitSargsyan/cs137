@@ -7,8 +7,8 @@ and open the template in the editor.
 <html>
     <head>
         <title>HatSpace Order Form</title>
-        <script language="JavaScript">
-
+        <script type="text/javascript">
+        <!--
 // Four tests:
 // 1) Age is an integer.
 // 2) Major is not an integer.
@@ -16,92 +16,89 @@ and open the template in the editor.
 // 4) Student number is an integer.
 // If any of the tests does not pass, submission is canceled.
             
+            
             function CheckOrder()
-            {
+            { 
+                alert("in CheckOrder function")
+                var HatID = document.OrderForm.HatID.value;
+                var QuantityOrdered = document.OrderForm.QuantityField.value;
+                var FirstName = document.OrderForm.FirstNameField.value;
+                var LastName = document.OrderForm.LastNameField.value;
+                var PhoneNumber = document.OrderForm.PhoneNumberField.value;
+                var ShippingAddress = document.OrderForm.ShippingAddressField.value;
+                var City = document.OrderForm.CityField.value;
+                var State = document.OrderForm.StateField.value;
+                var ZipCode = document.OrderForm.ZipCodeField.value;
+                var CCNumber = document.OrderForm.CreditCardNumberField.value;
+                var CCName = document.OrderForm.CreditCardNameField.value;
+                var ExpMonth = document.OrderForm.ExpMonthField.value;
+                var ExpYear = document.OrderForm.ExpYearField.value;
+                var ShippingMethod = '';
                 
-                var QuantityOrdered = document.getElementById("QuantityOrdered");
-                var FirstName = document.getElementById("FirstName");
-                var FirstName = document.getElementById("FirstName");
-                var LastName = document.getElementById("LastName");
-                var PhoneNumber = document.getElementById("PhoneNumber");
-                var ShippingAddress = document.getElementById("ShippingAddress");
-                var City = document.getElementById("CityName");
-                var State = document.getElementById("StateName");
-                var ZipCode = document.getElementById("ZipCode");
-                var CCNumber = document.getElementById("CreditCardNumber");
-                var CCName = document.getElementById("CreditCardName");
-                
-                if (!(parseInt(QuantityOrdered.value) > 0))
+        
+                for (i=0; i<document.OrderForm.Shipping.length; i++) 
                 {
-                    alert ("Quantity must be a positive integer.");
+                    if (document.OrderForm.Shipping[i].checked == true)
+                    {
+                        ShippingMethod = document.OrderForm.Shipping[i].value;
+                    }
+                }
+                
+                
+                if (parseInt(QuantityOrdered) <= 0)
+                {
+                    alert ("Quantity must be a positive nonzero integer.");
                     
                 }
-                else if (parseInt(FirstName.value) > 0)
+                else if (parseInt(FirstName) > 0)
                 {
                     alert ("No numbers allowed in First Name field");
                     
                 }
-                else if (parseInt(LastName.value) > 0)
+                else if (parseInt(LastName) > 0)
                 {
                     alert ("No numbers allowed in Last Name field");
                     
                 }
-                else if (!(parseInt(PhoneNumber.value).length = 10))
+                else if (parseInt(PhoneNumber).length != 10)
                 {
                     alert ("Phone number must be 10 digits long. Example: 1234567890");
                     
                 }
-                else if(ShippingAddress.value == "")
+                else if(ShippingAddress == "")
                 {
                     alert ("No shipping address entered");
                 }
-                else if(parseInt(City.value) > 0)
+                else if(parseInt(City) > 0)
                 {
                     alert ("No numbers allowed in City field");
                 }
-                else if(parseInt(State.value) > 0)
+                else if(parseInt(State) > 0)
                 {
                     alert ("No numbers allowed in State field");
                 }
-                else if(!(parseInt(ZipCode.value).length = 5))
+                else if(parseInt(ZipCode).length != 5)
                 {
                     alert ("Zip Code must be 5 digits long");
                 }
-                else if(!(parseInt(CCNumber.value).length = 16))
+                else if(parseInt(CCNumber).length != 16)
                 {
                     alert ("Credit Card number must be 16 digits long");
                 }
-                else if(parseInt(CCName.value) > 0)
+                else if(parseInt(CCName) > 0)
                 {
                     alert ("Credit Card name cannot contain numbers");
                 }
                 else
                 {
-                    submitEmail();
+                    alert("trying to open email window");
+                    var email = "yukiw@uci.edu";
+                    window.open("mailto:user@example.com?subject=Subject&body=message%20goes%20here");
+                                //window.open("mailto:" + email + "?subject=Order: " + HatID + "&body=Order Summary:%0D%0AHatID:" + HatID + "%0D%0AQuantity Ordered:" + QuantityOrdered + "%0D%0AName: " + FirstName + " " + LastName + "%0D%0APhoneNumber: " + PhoneNumber + "%0D%0AAddress: " + ShippingAddress + "%0D%0ACity: " + City + "%0AState: " + State + "%0AZIP: " + ZipCode + "%0ACard Number: " + CCNumber + "%0D%0AName on card: " + CCName + "%0D%0AExpiration Date: " + ExpMonth + "/" + ExpYear+ "%0D%0AShipping Method: " + ShippingMethod);
                 }
                 // Format looks OK, form can be submitted.
-                
-
             }
-            function submitEmail(){
-                var HatID = document.getElementById("HatID").value;
-                var QuantityOrdered = document.getElementById("QuantityOrdered").value;
-                var FirstName = document.getElementById("FirstName").value;
-                var LastName = document.getElementById("LastName").value;
-                var PhoneNumber = document.getElementById("PhoneNumber").value;
-                var ShippingAddress = document.getElementById("ShippingAddress").value;
-                var City = document.getElementById("CityName").value;
-                var State = document.getElementById("StateName").value;
-                var ZipCode = document.getElementById("ZipCode").value;
-                var CCNumber = document.getElementById("CreditCardNumber").value;
-                var CCName = document.getElementById("CreditCardName").value;
-                var ExpMonth = document.getElementById("CCExpiresMonth").value;
-                var ExpYear = document.getElementById("CCExpiresYear").value;
-                var ShippingMethod = getRadioButtonValue(document.OrderForm.Shipping);
-                
-                window.open("mailto:yukiw@uci.edu?subject=Order: " + HatID + "&body=Order Summary:%0D%0AHatID:" + HatID + "%0D%0AQuantity Ordered:" + QuantityOrdered + "%0D%0AName: " + FirstName + " " + LastName + "%0D%0APhoneNumber: " + PhoneNumber + "%0D%0AAddress: " + ShippingAddress + "%0D%0ACity: " + City + "%0AState: " + State + "%0AZIP: " + ZipCode + "%0ACard Number: " + CCNumber + "%0D%0AName on card: " + CCName + "%0D%0AExpiration Date: " + ExpMonth + "/" + ExpYear+ "%0D%0AShipping Method: " + ShippingMethod);
-            }
-
+        //-->
         </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -112,20 +109,20 @@ and open the template in the editor.
             <center>
                 <h1 align="center">HatSpace Order Form</h1>
                 <!--<div>I'm sure you guys will make a great page, thanks :)</div>-->
-                <form name = "OrderForm" method="get">
+                <form name = "OrderForm" method="get" onsubmit="CheckOrder();">
                     
-                    Hat ID: <input id="HatID" type="text" name="Hat ID" value="" required><br />
-                    Quantity: <input id="QuantityOrdered" type="text" name="QuantityField" value="" required><br />
-                    First Name: <input id="FirstName" type="text" name="FirstNameField" required><br />
-                    Last Name: <input id="LastName" type="text" name="LastNameField" required><br />
-                    Phone Number (Ex. 1111111111): <input id="PhoneNumber" type="text" name="PhoneNumberField" required><br />
-                    Address: <input id="ShippingAddress" type="text" name="ShippingAddressField" required><br />
-                    City: <input id="CityName" type="text" name="CityField" required><br />
-                    State: <input id="StateName" type="text" name="StateField" required><br />
-                    ZIP: <input id="ZipCode" type="text" name="ZipCodeField" required><br />
-                    Card Number: <input id="CreditCardNumber" type="text" name="CreditCardField" required><br />
-                    Name on card: <input id="CreditCardName" type="text" name="CreditCardNameField" required><br />
-                    Expiration Date: <select id="CCExpiresMonth" >
+                    Hat ID: <input id="HatID" type="text" name="HatID" value="" required/><br />
+                    Quantity: <input id="QuantityOrdered" type="text" name="QuantityField" value="" required/><br />
+                    First Name: <input id="FirstName" type="text" name="FirstNameField" required/><br />
+                    Last Name: <input id="LastName" type="text" name="LastNameField" required/><br />
+                    Phone Number (Ex. 1234567890): <input id="PhoneNumber" type="text" name="PhoneNumberField" required/><br />
+                    Address: <input id="ShippingAddress" type="text" name="ShippingAddressField" required/><br />
+                    City: <input id="CityName" type="text" name="CityField" required/><br />
+                    State: <input id="StateName" type="text" name="StateField" required/><br />
+                    ZIP: <input id="ZipCode" type="text" name="ZipCodeField" maxlength="5" required/><br />
+                    Card Number: <input id="CreditCardNumber" type="text" name="CreditCardNumberField" maxlength="16" required/><br />
+                    Name on card: <input id="CreditCardName" type="text" name="CreditCardNameField" required/><br />
+                    Expiration Date: <select id="CCExpiresMonth" name="ExpMonthField" required>
                                         <option value="" SELECTED>--Month--
                                         <option value="01">January (01)
                                         <option value="02">February (02)
@@ -140,7 +137,7 @@ and open the template in the editor.
                                         <option value="11">November (11)
                                         <option value="12">December (12)
                                     </select> /
-                                    <select id="CCExpiresYear">
+                                    <select id="CCExpiresYear" name="ExpYearField" required>
                                         <option value="" SELECTED>--Year--
                                         <option value="16">2016
                                         <option value="17">2017
@@ -160,7 +157,7 @@ and open the template in the editor.
                     <input type="radio" name="Shipping" value="2 Days Air" />2 Days Air<br />
                     <input type="radio" name="Shipping" value="6 Days Ground" />6 Days Ground<br />
                     
-                    <input type="submit" value="Submit Email" onclick="CheckOrder();">
+                    <input type="submit" value="Submit Email" />
                     
                 </form>
             </center>

@@ -13,6 +13,7 @@ and open the template in the editor.
     color:beige;
     text-align:center;
     padding:5px;
+    float:top;
 }
 
 #footer {
@@ -20,13 +21,14 @@ and open the template in the editor.
     color:beige;
     clear:both;
     text-align:center;
-    padding:5px;	 	 
+    padding:5px;
+    bottom: 0;
 }
 
-#image_div {
+#image {
   top: 50%;
   left: 50%;
-  height: 500px;
+  height: 400px;
   weight: 400px;  
   float:left; 
   padding:10px;
@@ -34,7 +36,19 @@ and open the template in the editor.
 
 ul {
     list-style-type:square;
-    float: right;
+    float: left;
     padding-left: 100px;
     padding-top: 20px;
+}
+
+p {
+    float: left;
+    padding-left: 100px;
+    padding-top: 10px;
+}
+
+
+#form {
+    position: relative;
+    float: bottom;
 }

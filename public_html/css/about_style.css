@@ -11,3 +11,20 @@ and open the template in the editor.
 *{
     font-family: 'Book Antiqua';
 }
+
+#header {
+    background-color:burlywood;
+    color:beige;
+    text-align:center;
+    padding:5px;
+    float:top;
+}
+
+#footer {
+    background-color:burlywood;
+    color:beige;
+    clear:both;
+    text-align:center;
+    padding:5px;
+    bottom: 0;
+}

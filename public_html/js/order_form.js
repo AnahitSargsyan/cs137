@@ -78,7 +78,7 @@ function CheckOrder()
                 }
                 else
                 {
-                    var email = "yukiw@uci.edu";
+                    var email = "user@example.com";
                     window.open("mailto:" + email + "?subject=Order: " + HatID + "&body=Order Summary:%0D%0AHatID:" + HatID + "%0D%0AQuantity Ordered:" + QuantityOrdered + "%0D%0AName: " + FirstName + " " + LastName + "%0D%0APhoneNumber: " + PhoneNumber + "%0D%0AAddress: " + ShippingAddress + "%0D%0ACity: " + City + "%0AState: " + State + "%0AZIP: " + ZipCode + "%0ACard Number: " + CCNumber + "%0D%0AName on card: " + CCName + "%0D%0AExpiration Date: " + ExpMonth + "/" + ExpYear+ "%0D%0AShipping Method: " + ShippingMethod);
     
                     return true;

@@ -37,7 +37,7 @@ table, td{
 
 
 div {
-  width: 400px;
+  width: 1200px;
   margin: 1 auto;
   overflow: auto;
 }
@@ -92,6 +92,6 @@ ul {
     background-color:burlywood;
     color:beige;
     clear:both;
-    text-align:right;
+    text-align:center;
     padding:5px;	 	 
 }

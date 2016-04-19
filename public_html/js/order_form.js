@@ -71,7 +71,7 @@ function CheckOrder()
                     alert ("Credit Card number must contain only numbers");
                     return false;
                 }
-                else if(!/^[A-z]+$/.test(CCName))
+                else if(!/^[A-z|\s]+$/.test(CCName))
                 {
                     alert ("Non-alphabetic characters not allowed in Credit Card Name field");
                     return false;

@@ -10,7 +10,7 @@ and open the template in the editor.
 
 *{
     font-family: 'Book Antiqua';
-    font-size: 90%;
+    font-size: 100%;
 }
 
 /*
@@ -27,11 +27,13 @@ p{
     text-align: left;
 }
 
+
 table, td{
     width: 800px;
     height: 400px;
     border: 5px;
 }
+
 
 
 div {
@@ -49,10 +51,12 @@ ul {
 
 
 .floated_img{
-  position: relative;
-  float: left;
-  background-position: 50% 50%;
+  position: static;
+  //float: right;
+  background-attachment: fixed;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: right;
   background-size: cover;
   /*
   display: inline-block;
@@ -85,9 +89,10 @@ ul {
 }
 
 #footer {
+    position: static;
     background-color:burlywood;
     color:beige;
     clear:both;
-    text-align:center;
+    text-align:right;
     padding:5px;	 	 
 }

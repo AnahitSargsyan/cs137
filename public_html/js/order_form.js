@@ -56,7 +56,7 @@ function CheckOrder()
                     alert ("Non-alphabetic characters not allowed in City field");
                     return false;
                 }
-                else if(!/^[A-z]+$/.test(State))
+                else if(!/^[A-z|\s]+$/.test(State))
                 {
                     alert ("Non-alphabetic characters not allowed in State field");
                     return false;

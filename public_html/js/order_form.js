@@ -51,7 +51,7 @@ function CheckOrder()
                     alert ("Phone number must be 10 digits long. Example: 1234567890");
                     return false;
                 }
-                else if(!/^[A-z]+$/.test(City))
+                else if(!/^[A-z|\s]+$/.test(City))
                 {
                     alert ("Non-alphabetic characters not allowed in City field");
                     return false;

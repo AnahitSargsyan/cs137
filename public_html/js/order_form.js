@@ -31,7 +31,7 @@ function CheckOrder()
                     }
                 }
                 
-                if (!/^\d{1,4}$/.test(QuantityOrdered))
+                if (!/^\d{1,}$/.test(QuantityOrdered))
                 {
                     alert ("Quantity must be a positive nonzero integer.");
                     return false;

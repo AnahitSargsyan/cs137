@@ -13,13 +13,17 @@ and open the template in the editor.
 }
 
 #header {
-    background-color:burlywood;
-    color:beige;
-    text-align:center;
-    padding:5px;
-    float:top;
-}
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: burlywood;
+    color: beige;
+    border-style: groove;
+    }
+#register {
+    display: flex;
+    flex-direction: column;
+    }
 #footer {
     background-color:burlywood;
     color:beige;
@@ -27,4 +31,11 @@ and open the template in the editor.
     text-align:center;
     padding:5px;
     bottom: 0;
+    border-style: groove;
+}
+
+#x { 
+    color: inherit;
+    text-decoration: none;
+    cursor: auto;
 }

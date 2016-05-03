@@ -144,5 +144,37 @@ function CheckOrder() {
 }
 ?>
 
+<?php
+echo "<h2>Your Input:</h2>";
+echo $hatid;
+echo "<br>";
+echo $quantity;
+echo "<br>";
+echo $firstname;
+echo "<br>";
+echo $lastname;
+echo "<br>";
+echo $email;
+echo "<br>";
+echo $phone;
+echo "<br>";
+echo $address;
+echo "<br>";
+echo $city;
+echo "<br>";
+echo $state;
+echo "<br>";
+echo $zipcode;
+echo "<br>";
+echo $ccnumber;
+echo "<br>";
+echo $ccname;
+echo "<br>";
+echo $expmonth;
+echo "<br>";
+echo $expyear;
+
+?>
+
 </body>
 </html>

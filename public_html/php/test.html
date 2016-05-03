@@ -23,5 +23,18 @@
             }
         </script>
         -->
+        $servername = "localhost";
+        $username = "inf124grp30";
+        $password = "st#VuY6R";
+        try {
+            $conn = new PDO("mysql:host=$servername:dbname=tax_rates", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTYION);
+            echo "Connected Successfully";
+            }
+        catch(PDOException $e)
+        {
+            echo "Connection failed: ";
+        }
+        
     </body>
 </html>

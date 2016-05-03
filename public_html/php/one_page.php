@@ -1,5 +1,40 @@
 
-<!DOCTYPE html>
+<?php
+$servername = "sylvester-mccoy-v3.ics.uci.edu";
+$username = "inf124grp30";
+$password = "st#VuY6R";
+$dbname = "inf124grp30";
+
+//Create connection tp database
+$connection = new mysql($servername, $username, $password, $dbname);
+
+//Check connection status
+if($connection->connect_error){
+    die("Connection failed: " . $connection->connect_error);
+}
+
+$query = "SELECT id, title, type, color, price, material, image_url, description FROM hats WHERE id = " + $_GET['id'];
+
+$result = $connection->query($query);
+
+$row = $result->fetch_assoc());
+
+$id = $row['id'];
+$price = $row['price'];
+$material = $row['material'];
+$description = $row['description'];
+$image_url = $row['image_url'];
+$title = $row['title'];
+$type = $row['type'];
+$color = $row['color'];
+
+
+$connection->close();
+
+
+
+
+print '<!DOCTYPE html>
 <!--
 Made by Arash Nase
 -->
@@ -13,52 +48,26 @@ Made by Arash Nase
     </head>
     
     <body>
- <div>
+        
+        <div>
             <div id="header">
                 <h1>HatSpace</h1>
                 <form>
                     <input id="search" type="text" placeholder="Search">
                 </form>
             </div>       
-
-
-
-<?php
-$servername = "sylvester-mccoy-v3.ics.uci.edu";
-$username = "inf124grp30";
-$password = "st#VuY6R";
-$dbname = "inf124grp30";
-
-//Create connection tp database
-$connection = new mysql($servername, $username, $password, $dbname);
-
-//Check connection status
-if($connection->connect_error){
-	die("Connection failed: " . $connection->connect_error);
-}
-
-$query = "SELECT id, title, type, color, price, material, image_url, description FROM hats WHERE id = " + $_GET['id'];
-
-$result = $connection->query($query);
-
-if($result->num_row > 0) {
-	while($row = $result->fetch_assoc()){
-		echo "<<img id=\"image\" src=\"../img/hats/" . $row["id"]. " alt=\"" . $row["title"]. "\"> <div><ul><li>Name: " . $row["title"]. "</li><li>Color: " . $row["color"]. "</li><li>Material: " . $row["material"]. "</li><li>Price: $" . $row["price"]."</li></ul>>";
-
-	}
-}
-
-$connection->close();
-
-
-
-?>
-
-
-
+       
+            <img id="image" src="../img/hats/$image_url" alt="$title"> 
+            <div>
+                <ul>
+                    <li>Name: $title</li>
+                    <li>Color: $color</li>
+                    <li>Material: $material</li>
+                    <li>Price: $ $price</li>
+                </ul>
             </div>
             <div class ="description"> 
-                Stock up on beer for those hot festival nights, or every night.
+                $description
             </div>
         </div>
         
@@ -188,6 +197,13 @@ $connection->close();
         <script src="js/item_description_js.js"></script> 
    
     </body>
-</html>
+</html>';
 
+}
+        catch(PDOException $e) {
+            echo $query . "<br>" . $e->getMessage();
+        }
+
+        
+?>
 

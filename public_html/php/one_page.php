@@ -6,30 +6,33 @@ $password = "st#VuY6R";
 $dbname = "inf124grp30";
 
 //Create connection tp database
-$connection = new mysql($servername, $username, $password, $dbname);
-
-//Check connection status
-if($connection->connect_error){
-    die("Connection failed: " . $connection->connect_error);
-}
-
-$query = "SELECT id, title, type, color, price, material, image_url, description FROM hats WHERE id = " + $_GET['id'];
-
-$result = $connection->query($query);
-
-$row = $result->fetch_assoc());
-
-$id = $row['id'];
-$price = $row['price'];
-$material = $row['material'];
-$description = $row['description'];
-$image_url = $row['image_url'];
-$title = $row['title'];
-$type = $row['type'];
-$color = $row['color'];
 
 
-$connection->close();
+try {
+            $conn = new PDO("mysql:host=$servername;dbname=inf124grp30", $username, $password);
+            //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTYION);
+            echo "Connected Successfully";
+            $sql = "SELECT id, title, type, color, price, material, image_url, description FROM hats WHERE id = "+ $_GET['id']; 
+    
+            foreach ($conn->query($sql) as $row) { 
+                $id = $row['id'];
+                $price = $row['price'];
+                $material = $row['material'];
+                $description = $row['description'];
+                $image_url = $row['image_url'];
+                $title = $row['title'];
+                $type = $row['type'];
+                $color = $row['color'];
+            }
+        } catch(PDOException $e) {
+            echo $sql . "<br>" . $e->getMessage();
+        }
+
+
+
+
+
+
 
 
 
@@ -199,11 +202,5 @@ Made by Arash Nase
     </body>
 </html>';
 
-}
-        catch(PDOException $e) {
-            echo $query . "<br>" . $e->getMessage();
-        }
 
-        
 ?>
-

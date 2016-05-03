@@ -1,4 +1,7 @@
+<html>
+<body>
 <?php
+    session_start();
 $dbhost = "sylvester-mccoy-v3.ics.uci.edu";
 $dbuser = 'inf124grp30';
 $dbpass = 'st#VuY6R';
@@ -10,22 +13,22 @@ try {
    	$orderid = $hatid = $firstname = $lastname = $email = $address = $phonenumber = $city = $state = $zipcode = $ccnumber = $ccname = $expmonth = $expyear = $shipping = $quantity = "";
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$orderid = rand(1,10000);
-	$hatid = $_POST["HatID"];
-	$quantity = test_input($_POST["QuantityField"]);
-	$firstname = test_input($_POST["FirstNameField"]);
-	$lastname = test_input($_POST["LastNameField"]);
-    $email = test_input($_POST["EmailAddressField"]);
-    $phonenumber = test_input($_POST["PhoneNumberField"]);
-    $address = test_input($_POST["ShippingAddressField"]);
-    $city = test_input($_POST["CityField"]);
-    $state = test_input($_POST["StateField"]);
-    $zipcode = test_input($_POST["ZipCodeField"]);
-    $ccnumber = test_input($_POST["CreditCardNumberField"]);
-    $ccname = test_input($_POST["CreditCardNameField"]);
-    $expmonth = test_input($_POST["ExpMonthField"]);
-    $expyear = test_input($_POST["ExpYearField"]);
-    $shipping = test_input($_POST["Shipping"]);
+            $orderid = rand(1,10000);
+            $hatid = $_POST["HatID"];
+            $quantity = test_input($_POST["QuantityField"]);
+            $firstname = test_input($_POST["FirstNameField"]);
+            $lastname = test_input($_POST["LastNameField"]);
+            $email = test_input($_POST["EmailAddressField"]);
+            $phonenumber = test_input($_POST["PhoneNumberField"]);
+            $address = test_input($_POST["ShippingAddressField"]);
+            $city = test_input($_POST["CityField"]);
+            $state = test_input($_POST["StateField"]);
+            $zipcode = test_input($_POST["ZipCodeField"]);
+            $ccnumber = test_input($_POST["CreditCardNumberField"]);
+            $ccname = test_input($_POST["CreditCardNameField"]);
+            $expmonth = test_input($_POST["ExpMonthField"]);
+            $expyear = test_input($_POST["ExpYearField"]);
+            $shipping = test_input($_POST["Shipping"]);
 	}
 
 function test_input($data) {
@@ -131,6 +134,7 @@ function CheckOrder() {
     	}
    
     	echo "Entered data successfully\n";
+        $_SESSION['order_id'] = $orderid;
     }
    
     mysql_close($conn);
@@ -139,3 +143,6 @@ function CheckOrder() {
     echo "Connection failed: ". $e->getMessage();
 }
 ?>
+
+</body>
+</html>

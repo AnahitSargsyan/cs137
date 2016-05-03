@@ -1,5 +1,5 @@
  <?php
-
+ session_start();
 
         $servername = "sylvester-mccoy-v3.ics.uci.edu";
         $username = "inf124grp30";
@@ -12,7 +12,7 @@
 
 
 
-$the_id = 1;
+$the_id = $_SESSION['order_id'];
 
 $sql = "SELECT hat_id, quantity, first_name, last_name, phone, address, city, state, zip, email , shipping FROM orders WHERE id = $the_id"; 
     

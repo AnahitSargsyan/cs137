@@ -10,10 +10,14 @@ $dbname = "inf124grp30";
 
 try {
             $conn = new PDO("mysql:host=$servername;dbname=inf124grp30", $username, $password);
+        
             //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTYION);
-            echo "Connected Successfully";
-            $sql = "SELECT id, title, type, color, price, material, image_url, description FROM hats WHERE id = "+ $_GET['id']; 
-    
+            //echo "Connected Successfully";
+            $sql = "SELECT id, title, color, price, material, image_url, description FROM hats WHERE id = "; 
+            
+
+            //echo $sql;
+            $sql .= $_GET['id'];
             foreach ($conn->query($sql) as $row) { 
                 $id = $row['id'];
                 $price = $row['price'];
@@ -21,23 +25,20 @@ try {
                 $description = $row['description'];
                 $image_url = $row['image_url'];
                 $title = $row['title'];
-                $type = $row['type'];
                 $color = $row['color'];
             }
         } catch(PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
         }
+        
+  
+
+
+?>
 
 
 
-
-
-
-
-
-
-
-print '<!DOCTYPE html>
+<!DOCTYPE html>
 <!--
 Made by Arash Nase
 -->
@@ -60,17 +61,17 @@ Made by Arash Nase
                 </form>
             </div>       
        
-            <img id="image" src="../img/hats/$image_url" alt="$title"> 
+            <img id="image" src="../img/hats/<?php echo $image_url; ?>" alt="<?php echo $title; ?> "> 
             <div>
                 <ul>
-                    <li>Name: $title</li>
-                    <li>Color: $color</li>
-                    <li>Material: $material</li>
-                    <li>Price: $ $price</li>
+                    <li>Name: <?php echo $title; ?></li>
+                    <li>Color: <?php echo $color; ?></li>
+                    <li>Material: <?php echo $material; ?></li>
+                    <li>Price: $ <?php echo $price; ?></li>
                 </ul>
             </div>
             <div class ="description"> 
-                $description
+                <?=$description?>
             </div>
         </div>
         
@@ -80,7 +81,7 @@ Made by Arash Nase
                     Hat ID: 
                 </div>
                 <div class="right">
-                    <input id="HatID" type="text" name="HatID" value="12" maxlength="4" required/><br />
+                    <input id="HatID" type="text" name="HatID" value="<?php echo $id; ?>" maxlength="4" required/><br />
                 </div>
                 <div class="left">
                     Quantity: 
@@ -200,7 +201,7 @@ Made by Arash Nase
         <script src="js/item_description_js.js"></script> 
    
     </body>
-</html>';
+</html>
 
 
-?>
+

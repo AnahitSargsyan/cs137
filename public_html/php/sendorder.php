@@ -45,7 +45,7 @@ function CheckOrder() {
     {
     	if(intval($quantity) <= 0)
     	{
-    		echo "quantity must be a postitive integer";
+            echo "quantity must be a postitive integer";
     		return false;
     	}
     }
@@ -136,6 +136,8 @@ function CheckOrder() {
     } catch (PDOException $e) {
         echo "Connection failed: ". $e->getMessage();
     }
+    
+    $conn = null;
 ?>
 
 <?php

@@ -6,7 +6,7 @@
     $dbuser = 'inf124grp30';
     $dbpass = 'st#VuY6R';
     try {    
-	$conn = new PDO("mysql:host=$dbhost;dbname=myDB", $dbuser, $dbpass);
+	$conn = new PDO("mysql:host=$servername;dbname=inf124grp30", $dbuser, $dbpass);
     //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
    	
 
@@ -120,11 +120,11 @@ function CheckOrder() {
    	echo "Connected successfully";
    	if(CheckOrder())
 	{
-            $stmt = $db->prepare("INSERT INTO orders(id, hat_id, quantity, first_name, last_name, phone, address, city, state, zip, card, name_on_card, month, year, shipping, email) VALUES(:id, :hat_id, :quantity, :first_name, :last_name, :phone, :address, :city, :state, :zip, :card, :name_on_card, :month, :year, :shipping, :email)");
+            $stmt = $conn->prepare("INSERT INTO orders(id, hat_id, quantity, first_name, last_name, phone, address, city, state, zip, card, name_on_card, month, year, shipping, email) VALUES(:id, :hat_id, :quantity, :first_name, :last_name, :phone, :address, :city, :state, :zip, :card, :name_on_card, :month, :year, :shipping, :email)");
             $stmt->execute(array(':id' => $id, ':hat_id' => $inthat_id, ':quantity' => $intquantity, ':first_name' => $firstname, ':last_name' => $lastname, ':phone' => $intphone, ':address' => $address, ':city' => $city, ':state' => $state, ':zip' => $zipcode, ':card' => $ccnumber, ':name_on_card' => $ccname, ':month' => $intmonth, ':year' => $intyear, ':shipping' => $shipping, ':email' => $email));
             
    
-            echo "Entered data successfully\n";
+            echo "Entered data successfully";
             $_SESSION['order_id'] = $orderid;
         }
         else

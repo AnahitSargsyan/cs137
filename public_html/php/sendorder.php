@@ -2,10 +2,10 @@
 <body>
 <?php
     session_start();
-$dbhost = "sylvester-mccoy-v3.ics.uci.edu";
-$dbuser = 'inf124grp30';
-$dbpass = 'st#VuY6R';
-try {    
+    $dbhost = "sylvester-mccoy-v3.ics.uci.edu";
+    $dbuser = 'inf124grp30';
+    $dbpass = 'st#VuY6R';
+    try {    
 	$conn = new PDO("mysql:host=$dbhost;dbname=myDB", $dbuser, $dbpass);
     //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
    	
@@ -32,10 +32,10 @@ try {
 	}
 
 function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
 
 
@@ -120,28 +120,22 @@ function CheckOrder() {
    	echo "Connected successfully";
    	if(CheckOrder())
 	{
-    	$sql = 'INSERT INTO orders '.
-       '(id, hat_id, quantity, first_name, last_name, phone, address, city, state, zip, card, name_on_card, month, year, shipping, email) '.
-       "VALUES ( '$orderid', '$inthatid', '$intquantity', '$firstname', '$lastname', '$intphone', '$address', '$city', '$state', '$zipcode', '$ccnumber', '$ccname', '$intmonth', '$intyear', '$shipping', '$email')";
-      
-    	
-    	$result = mysql_query( $sql, $conn );
+            $stmt = $db->prepare("INSERT INTO orders(id, hat_id, quantity, first_name, last_name, phone, address, city, state, zip, card, name_on_card, month, year, shipping, email) VALUES(:id, :hat_id, :quantity, :first_name, :last_name, :phone, :address, :city, :state, :zip, :card, :name_on_card, :month, :year, :shipping, :email)");
+            $stmt->execute(array(':id' => $id, ':hat_id' => $inthat_id, ':quantity' => $intquantity, ':first_name' => $firstname, ':last_name' => $lastname, ':phone' => $intphone, ':address' => $address, ':city' => $city, ':state' => $state, ':zip' => $zipcode, ':card' => $ccnumber, ':name_on_card' => $ccname, ':month' => $intmonth, ':year' => $intyear, ':shipping' => $shipping, ':email' => $email));
+            
    
-    	if(!$result ) {
-       		$message  = 'Invalid query: ' . mysql_error() . "\n";
-    		$message .= 'Whole query: ' . $query;
-    		die($message);
-    	}
+            echo "Entered data successfully\n";
+            $_SESSION['order_id'] = $orderid;
+        }
+        else
+        {
+            echo "Order Validation not passed";
+        }
    
-    	echo "Entered data successfully\n";
-        $_SESSION['order_id'] = $orderid;
-    }
-   
-    mysql_close($conn);
 
-} catch (PDOException $e) {
-    echo "Connection failed: ". $e->getMessage();
-}
+    } catch (PDOException $e) {
+        echo "Connection failed: ". $e->getMessage();
+    }
 ?>
 
 <?php

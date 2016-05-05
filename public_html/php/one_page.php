@@ -76,7 +76,7 @@ Made by Arash Nase
         </div>
         
         <div id ="form">
-            <form name = "OrderForm" method="get" onsubmit="CheckOrder();">
+            <form action = "sendorder.php" name = "OrderForm" method="post">
                 <div class="left">    
                     Hat ID: 
                 </div>

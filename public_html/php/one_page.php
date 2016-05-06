@@ -44,7 +44,7 @@ try {
         $submit = "Verify Order";
         
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            
+            $hatID = test_input($_POST["HatID"]);
             $quantity = test_input($_POST["QuantityField"]);
             $firstname = test_input($_POST["FirstNameField"]);
             $lastname = test_input($_POST["LastNameField"]);

@@ -11,7 +11,6 @@ $zip = $_REQUEST["zip"];
 $state = "";
 $city = "";
 
-// lookup all hints from array if $q is different from "" 
 if ($zip !== "") {
 	try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -27,8 +26,10 @@ if ($zip !== "") {
 			echo "Error: " . $e->getMessage();
 	}	
 }
+
 // set the db to null
 $conn = null;
+
 // Output the result
-echo $state . "   " . $city;
+echo $city.":".$state;
 ?>
